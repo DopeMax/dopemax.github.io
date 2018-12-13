@@ -77,7 +77,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="404 Not Found：该页无法显示">
-<meta property="og:url" content="http://hollamax.github.io/404.html">
+<meta property="og:url" content="http://czmax.github.io/404.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-01T02:16:19.752Z">
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://hollamax.github.io/404.html"/>
+  <link rel="canonical" href="http://czmax.github.io/404.html"/>
 
 
 
@@ -322,10 +322,461 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hollamax.github.io/2018/12/13/每天半小时：Pyhone学习笔记-00-目录/">
+    <link itemprop="mainEntityOfPage" href="http://czmax.github.io/2018/12/13/每天半小时：Pyhone学习笔记-03-Python基础之数据类型和变量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Holla Max">
+      <meta itemprop="name" content="Max">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/13/每天半小时：Pyhone学习笔记-03-Python基础之数据类型和变量/" itemprop="url">每天半小时：Pyhone学习笔记-03.Python基础之数据类型和变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T17:41:05+08:00">2018-12-13</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-数据类型和变量"><a href="#1-数据类型和变量" class="headerlink" title="1 数据类型和变量"></a>1 数据类型和变量</h1><h2 id="1-1-数据类型"><a href="#1-1-数据类型" class="headerlink" title="1.1 数据类型"></a>1.1 数据类型</h2><p>在Python中，能够直接处理的数据类型有以下几种：</p>
+<ul>
+<li>整数：Python可以处理任意大小的整数，当然包括负整数</li>
+<li>浮点数：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的</li>
+<li><p>字符串：</p>
+<ul>
+<li>字符串是以单引号<code>&#39;</code>或双引号<code>&quot;</code>括起来的任意文本，注意，如果<code>&#39;</code>本身也是一个字符，那就可以用<code>&quot;&quot;</code>括起来，转义字符<code>\</code>用法同java</li>
+<li><p>如果字符串里面有很多字符都需要转义，就需要加很多\，为了简化，Python还允许用r’’表示’’内部的字符串默认不转义</p>
+  <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'\\\t\\'</span>)</span><br><span class="line">\       \</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">r'\\\t\\'</span>)</span><br><span class="line">\\\t\\</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果字符串内部有很多换行，用\n写在一行里不好阅读，为了简化，Python允许用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```py</span><br><span class="line">&gt;&gt;&gt; print(&apos;&apos;&apos;line1</span><br><span class="line">... line2</span><br><span class="line">... line3&apos;&apos;&apos;)</span><br><span class="line">line1</span><br><span class="line">line2</span><br><span class="line">line3</span><br></pre></td></tr></table></figure></p>
+<p>  上面是在交互式命令行内输入，注意在输入多行内容时，提示符由<code>&gt;&gt;&gt;</code>变为<code>...</code>，提示你可以接着上一行输入，注意<code>...</code>是提示符，不是代码的一部分</p>
+<p>  如果写成程序并存为<code>.py</code>文件，就是：   </p>
+  <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'''line1</span></span><br><span class="line"><span class="string">line2</span></span><br><span class="line"><span class="string">line3'''</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>布尔值：</p>
+<ul>
+<li>在Python中，可以直接用True、False表示布尔值（请注意大小写）</li>
+<li>布尔值可以用and、or和not运算。</li>
+</ul>
+</li>
+<li>空值：空值是Python里一个特殊的值，用<code>None</code>表示。<code>None</code>不能理解为<code>0</code>，因为<code>0</code>是有意义的，而<code>None</code>是一个特殊的空值。</li>
+<li><p>变量：</p>
+<ul>
+<li>在Python中，等号=是赋值语句，可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量</li>
+<li><p>理解变量在计算机内存中的表示也非常重要。当我们写：</p>
+  <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">'ABC'</span></span><br></pre></td></tr></table></figure>
+<p>  时，Python解释器干了两件事情：</p>
+<ul>
+<li>在内存中创建了一个’ABC’的字符串；</li>
+<li><p>在内存中创建了一个名为a的变量，并把它指向’ABC’。</p>
+<p>也可以把一个变量a赋值给另一个变量b，这个操作实际上是把变量b指向变量a所指向的数据</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常量：  <ul>
+<li>无论整数做//除法还是取余数，结果永远是整数，所以，整数运算结果永远是精确的。</li>
+</ul>
+</li>
+</ul>
+<p>最后解释一下整数的除法为什么也是精确的。在Python中，有两种除法，一种除法是<code>/</code>：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.3333333333333335</span></span><br></pre></td></tr></table></figure></p>
+<p><code>/</code>除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure></p>
+<p>还有一种除法是<code>//</code>，称为地板除，两个整数的除法仍然是整数：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> // <span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<p>你没有看错，整数的地板除<code>//</code>永远是整数，即使除不尽。要做精确的除法，使用<code>/</code>就可以。</p>
+<p>因为<code>//</code>除法只取结果的整数部分，所以Python还提供一个余数运算，可以得到两个整数相除的余数：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> % <span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>无论整数做<code>//</code>除法还是取余数，结果永远是整数，所以，整数运算结果永远是精确的。</p>
+<h2 id="1-2-小结"><a href="#1-2-小结" class="headerlink" title="1.2 小结"></a>1.2 小结</h2><p>Python支持多种数据类型，在计算机内部，可以把任何数据都看成一个“对象”，而变量就是在程序中用来指向这些数据对象的，对变量赋值就是把数据和变量给关联起来。</p>
+<p>对变量赋值<code>x = y</code>是把变量x指向真正的对象，该对象是变量<code>y</code>所指向的。随后对变量<code>y</code>的赋值<code>不影响</code>变量<code>x</code>的指向。<br>Python的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如Java对32位整数的范围限制在<code>-2147483648-2147483647</code>。</p>
+<p>Python的浮点数也没有大小限制，但是超出一定范围就直接表示为<code>inf</code>（无限大）。</p>
+<blockquote>
+<p>目录：<a href="https://github.com/czmax/halfanhour_python/tree/master/part02_basic" target="_blank" rel="noopener">https://github.com/czmax/halfanhour_python/tree/master/part02_basic</a><br>下一章： </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://czmax.github.io/2018/12/13/每天半小时：Pyhone学习笔记-02-Python基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/13/每天半小时：Pyhone学习笔记-02-Python基础/" itemprop="url">每天半小时：Pyhone学习笔记-02.Python基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T17:38:17+08:00">2018-12-13</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h1><p>先看一段python代码：    </p>
+<pre><code class="py"><span class="comment"># print absolute value of an integer:</span>
+a = <span class="number">100</span>
+<span class="keyword">if</span> a &gt;= <span class="number">0</span>:
+    print(a)
+<span class="keyword">else</span>:
+    print(-a)
+</code></pre>
+<p>以<code>#</code>开头的语句是注释;  </p>
+<p>其他每一行都是一个语句，当语句以冒号<code>:</code>结尾时，缩进的语句视为代码块。</p>
+<p>按照约定俗成的管理，应该始终坚持使用4个空格的缩进。</p>
+<ul>
+<li>缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。</li>
+<li>当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。IDE很难像格式化Java代码那样格式化Python代码。</li>
+</ul>
+<p>最后，请务必注意，Python程序是大小写敏感的，如果写错了大小写，程序会报错。  </p>
+<h2 id="1-基础章节"><a href="#1-基础章节" class="headerlink" title="1 基础章节"></a>1 基础章节</h2><h2 id="1-1-数据类型和变量"><a href="#1-1-数据类型和变量" class="headerlink" title="1.1 数据类型和变量"></a>1.1 数据类型和变量</h2><p><a href="https://github.com/czmax/halfanhour_python/tree/master/part02_basic/1_dataType%26variable" target="_blank" rel="noopener">https://github.com/czmax/halfanhour_python/tree/master/part02_basic/1_dataType%26variable</a> </p>
+<h2 id="1-2-字符串和编码"><a href="#1-2-字符串和编码" class="headerlink" title="1.2 字符串和编码"></a>1.2 字符串和编码</h2><h2 id="1-3-使用list和tuple"><a href="#1-3-使用list和tuple" class="headerlink" title="1.3 使用list和tuple"></a>1.3 使用list和tuple</h2><h2 id="1-4-条件判断"><a href="#1-4-条件判断" class="headerlink" title="1.4 条件判断"></a>1.4 条件判断</h2><h2 id="1-5-循环"><a href="#1-5-循环" class="headerlink" title="1.5 循环"></a>1.5 循环</h2><h2 id="1-6-使用dict和set"><a href="#1-6-使用dict和set" class="headerlink" title="1.6 使用dict和set"></a>1.6 使用dict和set</h2><blockquote>
+<p>目录：<a href="https://github.com/czmax/halfanhour_python/" target="_blank" rel="noopener">https://github.com/czmax/halfanhour_python/</a><br>下一章： </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://czmax.github.io/2018/12/13/每天半小时：Pyhone学习笔记-01-初识Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/13/每天半小时：Pyhone学习笔记-01-初识Python/" itemprop="url">每天半小时：Pyhone学习笔记-01.初识Python</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T17:33:16+08:00">2018-12-13</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="初识python"><a href="#初识python" class="headerlink" title="初识python"></a>初识python</h1><h2 id="1-安装python"><a href="#1-安装python" class="headerlink" title="1 安装python"></a>1 安装python</h2><p>64位下载地址：<br><a href="https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe</a></p>
+<p>安装时注意add path选项勾选</p>
+<p>了解CPython解释器的概念</p>
+<h2 id="2-执行python"><a href="#2-执行python" class="headerlink" title="2 执行python"></a>2 执行python</h2><ol>
+<li><p>打开cmd，输入python命令；</p>
+</li>
+<li><p>输入<code>print(&#39;hello python&#39;)</code>;<br> 注意这种方式是可交互的</p>
+</li>
+<li><p><code>exit()</code>退出;</p>
+</li>
+<li><p>也可以cmd中输入python xxx.py文件，查看执行结果<br> <code>.py</code>文件中需要输入<code>print(100+100)</code>，才会有执行结果<br> 这种方式不可交互，不能做调试</p>
+</li>
+</ol>
+<h2 id="3-文本编辑器"><a href="#3-文本编辑器" class="headerlink" title="3 文本编辑器"></a>3 文本编辑器</h2><p>notepad++</p>
+<p>sublime</p>
+<h2 id="4-Python代码运行助手learning-py"><a href="#4-Python代码运行助手learning-py" class="headerlink" title="4 Python代码运行助手learning.py"></a>4 Python代码运行助手learning.py</h2><ol>
+<li>先bending运行<code>python learning.py</code>;</li>
+<li><p>打开廖雪峰的网站，找输入框输入代码，执行查看结果。     </p>
+<p> <a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431643484137e38b44e5925440ec8b1e4c70f800b4e2000" target="_blank" rel="noopener">Python代码运行助手</a>    </p>
+</li>
+</ol>
+<blockquote>
+<p>目录：<a href="https://github.com/czmax/halfanhour_python/" target="_blank" rel="noopener">https://github.com/czmax/halfanhour_python/</a><br>下一章： Python基础  <a href="https://github.com/czmax/halfanhour_python/tree/master/part02_basic" target="_blank" rel="noopener">https://github.com/czmax/halfanhour_python/tree/master/part02_basic</a> </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://czmax.github.io/2018/12/13/每天半小时：Pyhone学习笔记-00-目录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -461,151 +912,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hollamax.github.io/2018/12/13/每天半小时：Pyhone学习笔记-01-初识Python/">
+    <link itemprop="mainEntityOfPage" href="http://czmax.github.io/2018/11/01/spring-boot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Holla Max">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/13/每天半小时：Pyhone学习笔记-01-初识Python/" itemprop="url">每天半小时：Pyhone学习笔记-01.初识Python</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T17:27:16+08:00">2018-12-13</time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="初识python"><a href="#初识python" class="headerlink" title="初识python"></a>初识python</h1><h2 id="1-安装python"><a href="#1-安装python" class="headerlink" title="1 安装python"></a>1 安装python</h2><p>64位下载地址：<br><a href="https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe</a></p>
-<p>安装时注意add path选项勾选</p>
-<p>了解CPython解释器的概念</p>
-<h2 id="2-执行python"><a href="#2-执行python" class="headerlink" title="2 执行python"></a>2 执行python</h2><ol>
-<li><p>打开cmd，输入python命令；</p>
-</li>
-<li><p>输入<code>print(&#39;hello python&#39;)</code>;<br> 注意这种方式是可交互的</p>
-</li>
-<li><p><code>exit()</code>退出;</p>
-</li>
-<li><p>也可以cmd中输入python xxx.py文件，查看执行结果<br> <code>.py</code>文件中需要输入<code>print(100+100)</code>，才会有执行结果<br> 这种方式不可交互，不能做调试</p>
-</li>
-</ol>
-<h2 id="3-文本编辑器"><a href="#3-文本编辑器" class="headerlink" title="3 文本编辑器"></a>3 文本编辑器</h2><p>notepad++</p>
-<p>sublime</p>
-<h2 id="4-Python代码运行助手learning-py"><a href="#4-Python代码运行助手learning-py" class="headerlink" title="4 Python代码运行助手learning.py"></a>4 Python代码运行助手learning.py</h2><ol>
-<li>先bending运行<code>python learning.py</code>;</li>
-<li><p>打开廖雪峰的网站，找输入框输入代码，执行查看结果。     </p>
-<p> <a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431643484137e38b44e5925440ec8b1e4c70f800b4e2000" target="_blank" rel="noopener">Python代码运行助手</a>    </p>
-</li>
-</ol>
-<blockquote>
-<p>github: <a href="https://github.com/czmax/halfanhour_python/tree/master/part01_install" target="_blank" rel="noopener">https://github.com/czmax/halfanhour_python/tree/master/part01_install</a>   </p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hollamax.github.io/2018/11/01/spring-boot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Holla Max">
+      <meta itemprop="name" content="Max">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -721,10 +1031,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hollamax.github.io/2018/09/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://czmax.github.io/2018/09/28/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Holla Max">
+      <meta itemprop="name" content="Max">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -870,7 +1180,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Holla Max</p>
+              <p class="site-author-name" itemprop="name">Max</p>
               <p class="site-description motion-element" itemprop="description">如来如去</p>
           </div>
 
@@ -881,7 +1191,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -894,7 +1204,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -935,7 +1245,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Holla Max</span>
+  <span class="author" itemprop="copyrightHolder">Max</span>
 
   
 
