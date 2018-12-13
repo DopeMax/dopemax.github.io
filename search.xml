@@ -4,6 +4,9 @@
     <title><![CDATA[每天半小时：Pyhone学习笔记-03.Python基础之数据类型和变量]]></title>
     <url>%2F2018%2F12%2F13%2F%E6%AF%8F%E5%A4%A9%E5%8D%8A%E5%B0%8F%E6%97%B6%EF%BC%9APyhone%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-03-Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8F%98%E9%87%8F%2F</url>
     <content type="text"><![CDATA[1 数据类型和变量1.1 数据类型在Python中，能够直接处理的数据类型有以下几种： 整数：Python可以处理任意大小的整数，当然包括负整数 浮点数：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的 字符串： 字符串是以单引号&#39;或双引号&quot;括起来的任意文本，注意，如果&#39;本身也是一个字符，那就可以用&quot;&quot;括起来，转义字符\用法同java 如果字符串里面有很多字符都需要转义，就需要加很多\，为了简化，Python还允许用r’’表示’’内部的字符串默认不转义 1234&gt;&gt;&gt; print('\\\t\\')\ \&gt;&gt;&gt; print(r'\\\t\\')\\\t\\ 如果字符串内部有很多换行，用\n写在一行里不好阅读，为了简化，Python允许用1234567```py&gt;&gt;&gt; print(&apos;&apos;&apos;line1... line2... line3&apos;&apos;&apos;)line1line2line3 上面是在交互式命令行内输入，注意在输入多行内容时，提示符由&gt;&gt;&gt;变为...，提示你可以接着上一行输入，注意...是提示符，不是代码的一部分 如果写成程序并存为.py文件，就是： 123print('''line1line2line3''') 布尔值： 在Python中，可以直接用True、False表示布尔值（请注意大小写） 布尔值可以用and、or和not运算。 空值：空值是Python里一个特殊的值，用None表示。None不能理解为0，因为0是有意义的，而None是一个特殊的空值。 变量： 在Python中，等号=是赋值语句，可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量 理解变量在计算机内存中的表示也非常重要。当我们写： 1a = 'ABC' 时，Python解释器干了两件事情： 在内存中创建了一个’ABC’的字符串； 在内存中创建了一个名为a的变量，并把它指向’ABC’。 也可以把一个变量a赋值给另一个变量b，这个操作实际上是把变量b指向变量a所指向的数据 常量： 无论整数做//除法还是取余数，结果永远是整数，所以，整数运算结果永远是精确的。 最后解释一下整数的除法为什么也是精确的。在Python中，有两种除法，一种除法是/：12&gt;&gt;&gt; 10 / 33.3333333333333335 /除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：12&gt;&gt;&gt; 9 / 33.0 还有一种除法是//，称为地板除，两个整数的除法仍然是整数：12&gt;&gt;&gt; 10 // 33 你没有看错，整数的地板除//永远是整数，即使除不尽。要做精确的除法，使用/就可以。 因为//除法只取结果的整数部分，所以Python还提供一个余数运算，可以得到两个整数相除的余数：12&gt;&gt;&gt; 10 % 31 无论整数做//除法还是取余数，结果永远是整数，所以，整数运算结果永远是精确的。 1.2 小结Python支持多种数据类型，在计算机内部，可以把任何数据都看成一个“对象”，而变量就是在程序中用来指向这些数据对象的，对变量赋值就是把数据和变量给关联起来。 对变量赋值x = y是把变量x指向真正的对象，该对象是变量y所指向的。随后对变量y的赋值不影响变量x的指向。Python的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如Java对32位整数的范围限制在-2147483648-2147483647。 Python的浮点数也没有大小限制，但是超出一定范围就直接表示为inf（无限大）。 目录：https://github.com/czmax/halfanhour_python/tree/master/part02_basic下一章：]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
       <tags>
         <tag>python</tag>
       </tags>
@@ -12,6 +15,9 @@
     <title><![CDATA[每天半小时：Pyhone学习笔记-02.Python基础]]></title>
     <url>%2F2018%2F12%2F13%2F%E6%AF%8F%E5%A4%A9%E5%8D%8A%E5%B0%8F%E6%97%B6%EF%BC%9APyhone%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-02-Python%E5%9F%BA%E7%A1%80%2F</url>
     <content type="text"><![CDATA[Python基础先看一段python代码： # print absolute value of an integer: a = 100 if a &gt;= 0: print(a) else: print(-a) 以#开头的语句是注释; 其他每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。 按照约定俗成的管理，应该始终坚持使用4个空格的缩进。 缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。 当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。IDE很难像格式化Java代码那样格式化Python代码。 最后，请务必注意，Python程序是大小写敏感的，如果写错了大小写，程序会报错。 1 基础章节1.1 数据类型和变量https://github.com/czmax/halfanhour_python/tree/master/part02_basic/1_dataType%26variable 1.2 字符串和编码1.3 使用list和tuple1.4 条件判断1.5 循环1.6 使用dict和set 目录：https://github.com/czmax/halfanhour_python/下一章：]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
       <tags>
         <tag>python</tag>
       </tags>
@@ -20,6 +26,9 @@
     <title><![CDATA[每天半小时：Pyhone学习笔记-01.初识Python]]></title>
     <url>%2F2018%2F12%2F13%2F%E6%AF%8F%E5%A4%A9%E5%8D%8A%E5%B0%8F%E6%97%B6%EF%BC%9APyhone%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-01-%E5%88%9D%E8%AF%86Python%2F</url>
     <content type="text"><![CDATA[初识python1 安装python64位下载地址：https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe 安装时注意add path选项勾选 了解CPython解释器的概念 2 执行python 打开cmd，输入python命令； 输入print(&#39;hello python&#39;); 注意这种方式是可交互的 exit()退出; 也可以cmd中输入python xxx.py文件，查看执行结果 .py文件中需要输入print(100+100)，才会有执行结果 这种方式不可交互，不能做调试 3 文本编辑器notepad++ sublime 4 Python代码运行助手learning.py 先bending运行python learning.py; 打开廖雪峰的网站，找输入框输入代码，执行查看结果。 Python代码运行助手 目录：https://github.com/czmax/halfanhour_python/下一章： Python基础 https://github.com/czmax/halfanhour_python/tree/master/part02_basic]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
       <tags>
         <tag>python</tag>
       </tags>
@@ -36,8 +45,12 @@
     <title><![CDATA[Spring Boot 总纲]]></title>
     <url>%2F2018%2F11%2F01%2Fspring-boot%2F</url>
     <content type="text"><![CDATA[Spring Boot干货系列：总纲Spring Boot干货系列：总纲：http://tengj.top/2017/04/24/springboot0/ Spring Boot 尚硅谷教程 核心篇+整合篇Spring Boot 尚硅谷教程 核心篇+整合篇：https://github.com/HollaMax/SpringBoot/tree/master/01-atguigui-parent]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
         <tag>spring boot</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
